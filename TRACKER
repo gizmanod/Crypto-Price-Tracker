@@ -1,0 +1,15 @@
+### Files
+- **`price_tracker.py`**
+  ```python
+  import requests
+
+  def fetch_price(crypto):
+      url = f"https://api.coingecko.com/api/v3/simple/price?ids={crypto}&vs_currencies=usd"
+      response = requests.get(url).json()
+      return response[crypto]['usd']
+
+  if __name__ == "__main__":
+      crypto = input("Enter cryptocurrency (e.g., bitcoin): ").lower()
+      price = fetch_price(crypto)
+      print(f"The current price of {crypto.capitalize()} is ${price}")
+  ```
